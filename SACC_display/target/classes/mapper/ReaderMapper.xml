@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.microservice.show.display.mapper.ReaderMapper">
+
+    <resultMap id="readerRM" type="org.microservice.pub.commons.entity.Reader">
+        <id property="id" column="id"/>
+        <result property="viewTimes" column="view_times"/>
+    </resultMap>
+
+    <insert id="insertRecord" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO reader(userCode,bookCode,view_times)
+        VALUES(#{userCode},#{bookCode},#{viewTimes})
+    </insert>
+
+    <update id="addViewTimes">
+        UPDATE reader
+        SET view_times = view_times+1
+        WHERE userCode=#{userCode} AND bookCode=#{bookCode}
+    </update>
+
+
+    <select id="selectByUCode" resultMap="readerRM">
+        SELECT * FROM reader
+        WHERE userCode=#{userCode}
+    </select>
+
+    <select id="selectByBCode" resultMap="readerRM">
+        SELECT * FROM reader
+        WHERE bookCode=#{bookCode}
+    </select>
+
+    <select id="listAllRecords" resultMap="readerRM">
+        SELECT userCode,bookCode,view_times FROM reader
+        ORDER BY userCode
+    </select>
+</mapper>

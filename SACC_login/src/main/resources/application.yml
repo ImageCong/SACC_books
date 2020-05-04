@@ -1,0 +1,50 @@
+# 服务端口配置
+server:
+  port: 8050
+  servlet:
+    context-path: /
+
+# 数据源配置
+spring:
+  datasource:
+    username: root
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sacc_book?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    type: com.alibaba.druid.pool.DruidDataSource
+
+# mybatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  # entity alias
+  type-aliases-package: org.microservice.pub.commons.entity
+
+
+# dubbo配置
+dubbo:
+  application:
+    name: sign-in-provider
+  registry:
+    protocol: zookeeper
+    address: 
+  monitor:
+    protocol: registry
+  config-center:
+    address: 
+    timeout: 10000
+  protocol:
+    id: signin_service
+    name: dubbo
+    port: -1
+
+# 日志配置
+logging:
+  level:
+    root: info
+  file:
+    name: log/sinin.log
+
+
+
+
+

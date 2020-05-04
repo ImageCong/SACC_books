@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.microservice.show.display.mapper.BookMapper">
+
+    <!-- 新增图书 -->
+    <insert id="insertBook" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO book(bookCode,bookName)
+        VALUES(#{bookCode},#{bookName})
+    </insert>
+
+    <!-- 根据bookCode查书 -->
+    <select id="findBookbyCode" resultType="org.microservice.pub.commons.entity.Book">
+        SELECT DISTINCT * FROM book
+        WHERE bookCode=#{bookCode}
+    </select>
+
+    <!-- 根据bookName查书 -->
+    <select id="findBookbyName" resultType="org.microservice.pub.commons.entity.Book">
+        SELECT * FROM book
+        WHERE bookName=#{bookName}
+    </select>
+
+
+    <!-- 列出所有图书 -->
+    <select id="listBook" resultType="org.microservice.pub.commons.entity.Book">
+        SELECT * FROM book LIMIT 10
+    </select>
+
+
+</mapper>
