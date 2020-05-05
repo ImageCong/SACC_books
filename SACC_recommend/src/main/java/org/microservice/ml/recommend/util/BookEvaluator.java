@@ -18,19 +18,6 @@ public class BookEvaluator {
     final static int NEIGHBORHOOD_NUM = 2;
     final static int RECOMMENDER_NUM = 3;
 
-    // 评估
-    public static void main(String[] args) throws TasteException, IOException {
-        String file = "C:\\Users\\cyx_i\\IdeaProjects\\SACC_books\\SACC_recommend\\src\\main\\resources\\static\\douban-rating.txt";
-        DataModel dataModel = RecommendFactory.buildDataModel(file);
-        userEuclidean(dataModel);
-        userLoglikelihood(dataModel);
-        userEuclideanNoPref(dataModel);
-
-        itemEuclidean(dataModel);
-        itemLoglikelihood(dataModel);
-        itemEuclideanNoPref(dataModel); // 这个最好用
-    }
-
     public static RecommenderBuilder userEuclidean(DataModel dataModel) throws TasteException, IOException {
         System.out.println("userEuclidean");
         UserSimilarity userSimilarity = RecommendFactory.userSimilarity(RecommendFactory.SIMILARITY.EUCLIDEAN, dataModel);
