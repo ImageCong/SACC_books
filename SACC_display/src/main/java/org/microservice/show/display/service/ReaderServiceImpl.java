@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.microservice.pub.commons.entity.Reader;
 import org.microservice.pub.commons.service.ReaderService;
+import org.microservice.show.display.cache.ReaderCache;
 import org.microservice.show.display.mapper.ReaderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,6 +26,8 @@ import java.util.concurrent.TimeUnit;
 public class ReaderServiceImpl implements ReaderService {
     @Autowired
     private ReaderMapper readerMapper;
+    @Autowired
+    private ReaderCache readerCache;
 
     @Override
     public List<Reader> selectByUCode(Integer userCode) {
@@ -56,7 +59,7 @@ public class ReaderServiceImpl implements ReaderService {
 
     @Override
     public int addViewTimes(Integer userCode, Integer bookCode) {
-        int isAddSuccess = readerMapper.addViewTimes(userCode, bookCode);
+        int isAddSuccess = readerCache.addViewTimes(userCode, bookCode);
 
         if (isAddSuccess == 1) {
             log.info("========= addViewTimes success =========   ");

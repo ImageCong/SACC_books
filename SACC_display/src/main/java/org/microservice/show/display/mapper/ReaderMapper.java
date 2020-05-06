@@ -13,7 +13,7 @@ public interface ReaderMapper {
     List<Reader> selectByBCode(Integer bookCode);
 
     // 增加浏览次数
-    int addViewTimes(@Param("userCode") Integer userCode, @Param("bookCode") Integer bookCode);
+    int addViewTimes(@Param("userCode") Integer userCode, @Param("bookCode") Integer bookCode,@Param("times") Integer times);
 
     // 增加阅读记录
     int insertRecord(Reader reader);

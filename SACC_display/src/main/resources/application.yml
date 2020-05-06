@@ -10,14 +10,26 @@ spring:
     username: root
     password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/sacc_book?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    url: 
     type: com.alibaba.druid.pool.DruidDataSource
+  # redis配置
+  redis:
+    port: 
+    host: 
+    password: 
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 6
+        max-wait: 5000
 
 # mybatis配置
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   # entity alias
   type-aliases-package: org.microservice.pub.commons.entity
+
+
 
 
 # dubbo配置
