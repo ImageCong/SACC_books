@@ -1,6 +1,5 @@
 package org.microservice.api.gateway.config;
 
-
 import org.microservice.api.gateway.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -13,6 +12,6 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/", "/static/**");
+                .excludePathPatterns("/", "/login", "/static/**");
     }
 }
