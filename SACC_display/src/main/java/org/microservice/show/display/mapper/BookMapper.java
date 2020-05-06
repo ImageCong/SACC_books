@@ -12,7 +12,7 @@ public interface BookMapper {
     List<Book> findBookbyName(String bookName);
 
     // 列出所有书
-    List<Book> listBook();
+    List<Book> listBook(Integer offset);
 
     // 新增图书
     int insertBook(Book book);

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Random;
 
 @Slf4j
 @Component
@@ -36,7 +37,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> listBook() {
-        List<Book> books = bookMapper.listBook();
+        Random random = new Random();
+        int offset = random.nextInt(300)+1;
+        List<Book> books = bookMapper.listBook(offset);
 
         log.info("=========listBook=========   ");
         for (Book b : books) {

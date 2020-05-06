@@ -26,7 +26,7 @@
 
     <!-- 列出所有图书 -->
     <select id="listBook" resultType="org.microservice.pub.commons.entity.Book">
-        SELECT * FROM book LIMIT 10
+        SELECT * FROM book LIMIT #{offset},10
     </select>
 
 
